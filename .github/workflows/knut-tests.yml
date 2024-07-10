@@ -139,6 +139,14 @@ jobs:
           cd ..
           echo "CLANGXX=${{ env.LLVM_PATH }}/bin/clang++" >> $GITHUB_ENV
 
+      - name: where is ninja
+        shell: pwsh
+        run: |
+          get-command ninja
+          echo $env:PATH
+          cat $env:GITHUB_PATH
+          
+
       - name: Configure project
         run: cmake -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache --preset=${{ matrix.cmake_preset }}
 
